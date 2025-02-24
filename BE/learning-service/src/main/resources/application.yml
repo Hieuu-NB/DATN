@@ -1,0 +1,53 @@
+
+spring:
+  application:
+    name: learning-service
+  security:
+    cors:
+      allowed-origins: http://localhost:8080
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:certs/public-key.pem
+  #      client:
+  #        registration:
+  #          service-a-client:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/user-service
+    username: postgres
+    password: 1
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 9003
+
+
+application:
+  security:
+    rsa:
+      rsa-public-key: classpath:certs/public-key.pem
+      rsa-private-key: classpath:certs/private-key.pem
+    jwt:
+      access-token-validity-in-seconds: 300 # 5 minutes
+      refresh-token-validity-in-seconds: 604800 #7 days
+
+feign:
+  oauth2:
+    enabled: true
+
+
+#spring.datasource.url=jdbc:postgresql://localhost:5432/user-service
+#spring.datasource.url=jdbc:postgresql://localhost:5432/auth-service
+
+#spring.datasource.username=postgres
+#spring.datasource.password=1
+#
+#spring.jpa.hibernate.ddl-auto= update
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.format_sql=true

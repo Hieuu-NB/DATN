@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: user-service
+  security:
+    cors:
+      allowed-origins: http://localhost:8080
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/user-service
+    username: postgres
+    password: 1
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+
+
+
+server:
+  port: 1234
+
+
+#spring.security.cors.allowed-origins: http://localhost:8080
+
+
+application:
+  security:
+    rsa:
+      rsa-public-key: classpath:certs/public-key.pem
+      rsa-private-key: classpath:certs/private-key.pem
+    jwt:
+      access-token-validity-in-seconds: 300 # 5 minutes
+      refresh-token-validity-in-seconds: 604800 #7 days
+
+
+#spring.datasource.url=jdbc:postgresql://localhost:5432/user-service
+#spring.datasource.url=jdbc:postgresql://localhost:5432/auth-service
+
+#spring.datasource.username=postgres
+#spring.datasource.password=1
+#
+#spring.jpa.hibernate.ddl-auto= update
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.format_sql=true
